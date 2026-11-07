@@ -925,10 +925,10 @@
 
 
     /* ========================================================
-       INICIO MÓVIL — REFERENCIA EXACTA 865.jpg
+       INICIO MÓVIL — VERSIÓN 2 CON CARGA VERIFICADA
        La ilustración conserva la tipografía, los íconos y la foto.
        Los enlaces HTML se alinean encima de los botones dibujados.
-       Imagen externa: images/urban-mobile-referencia.jpg
+       Imagen externa: ./portada.jpg?v=2
        Escritorio conserva sus estilos originales.
        ======================================================== */
     .carrito-icono-referencia { display: none; }
@@ -937,21 +937,21 @@
       body { padding-bottom: max(72px, 18.75vw); }
 
       /* Primeros 146 píxeles de la referencia: encabezado. */
-      header {
+      html.portada-cargada header {
         position: relative;
         height: 16.898148vw;
         border: 0;
         backdrop-filter: none;
-        background: #050505 url("images/urban-mobile-referencia.jpg")
+        background: #050505 url("./portada.jpg?v=2")
                     left top / 100vw auto no-repeat;
       }
-      header .nav { width: 100%; height: 100%; min-height: 0; padding: 0; }
-      header .logo {
+      html.portada-cargada header .nav { width: 100%; height: 100%; min-height: 0; padding: 0; }
+      html.portada-cargada header .logo {
         position: absolute;
         left: 4.7%; top: 18%; width: 51%; height: 64%;
         opacity: 0;
       }
-      header .menu-movil {
+      html.portada-cargada header .menu-movil {
         display: block;
         position: absolute;
         right: 3%; top: 12%; width: 12%; height: 75%;
@@ -959,33 +959,33 @@
         font-size: 0;
         color: transparent;
       }
-      header .nav-links { top: 100%; z-index: 1001; }
-      header .menu-movil:focus-visible,
-      header .logo:focus-visible {
+      html.portada-cargada header .nav-links { top: 100%; z-index: 1001; }
+      html.portada-cargada header .menu-movil:focus-visible,
+      html.portada-cargada header .logo:focus-visible {
         outline: 3px solid #ffce00;
         outline-offset: -3px;
         opacity: 1;
       }
 
       /* Recorte por CSS: muestra la portada, excluye el carrito de ejemplo. */
-      .hero {
+      html.portada-cargada .hero {
         display: block;
         height: 142.129630vw;
         min-height: 0;
         padding: 0;
-        background: #070707 url("images/urban-mobile-referencia.jpg")
+        background: #070707 url("./portada.jpg?v=2")
                     left -16.898148vw / 100vw auto no-repeat;
       }
-      .hero::before, .hero::after { display: none; }
-      .hero > .contenedor,
-      .hero-contenido {
+      html.portada-cargada .hero::before, html.portada-cargada .hero::after { display: none; }
+      html.portada-cargada .hero > .contenedor,
+      html.portada-cargada .hero-contenido {
         position: static;
         width: 100%; max-width: none;
         height: 100%; margin: 0; padding: 0;
       }
 
       /* Texto accesible: el aspecto visible está en el arte original. */
-      .hero-etiqueta, .hero h1, .hero p {
+      html.portada-cargada .hero-etiqueta, html.portada-cargada .hero h1, html.portada-cargada .hero p {
         position: absolute;
         width: 1px; height: 1px;
         overflow: hidden;
@@ -993,8 +993,8 @@
         white-space: nowrap;
         padding: 0; margin: 0; border: 0;
       }
-      .hero-botones { display: contents; }
-      .hero-botones a {
+      html.portada-cargada .hero-botones { display: contents; }
+      html.portada-cargada .hero-botones a {
         position: absolute;
         z-index: 3;
         display: block;
@@ -1005,22 +1005,22 @@
         transform: none;
         border-radius: 4.5vw;
       }
-      .hero-botones .boton {
+      html.portada-cargada .hero-botones .boton {
         left: 6.134259%; top: 48.697068%;
         width: 41.666667%; height: 6.921824%;
       }
-      .hero-botones .boton-borde {
+      html.portada-cargada .hero-botones .boton-borde {
         left: 6.134259%; top: 57.491857%;
         width: 39.699074%; height: 6.677524%;
       }
-      .hero-botones a:focus-visible {
+      html.portada-cargada .hero-botones a:focus-visible {
         outline: 3px solid white;
         outline-offset: 3px;
       }
-      .hero-botones a:active { background: rgb(255 255 255 / 12%); }
-      .hero-botones a:hover { transform: none; background: transparent; }
+      html.portada-cargada .hero-botones a:active { background: rgb(255 255 255 / 12%); }
+      html.portada-cargada .hero-botones a:hover { transform: none; background: transparent; }
       .beneficios { margin-top: 0; }
-      body.inicio-visible .whatsapp-flotante { visibility: hidden; }
+      html.portada-cargada body.inicio-visible .whatsapp-flotante { visibility: hidden; }
 
       /* Carrito real: nunca se utilizan los $42.000 impresos en la foto. */
       .barra-carrito-movil {
@@ -2049,5 +2049,43 @@
       document.body.classList.remove('inicio-visible');
     }
   </script>
+
+  <!-- ========================================================
+       CARGA SEGURA DE PORTADA
+       Subir portada.jpg AL LADO de index.html, sin subcarpetas.
+       La composición se activa solo cuando la imagen cargó bien.
+       Si falta la imagen, los textos y botones siguen visibles.
+       ======================================================== -->
+  <script id="cargaPortadaMovil">
+    (() => {
+      const pantallaMovil = window.matchMedia('(max-width: 720px)');
+      let cargaIniciada = false;
+
+      function cargarPortada() {
+        if (!pantallaMovil.matches || cargaIniciada) return;
+        cargaIniciada = true;
+        const portada = new Image();
+        portada.onload = () => {
+          if (portada.naturalWidth > 0 && portada.naturalHeight > 0) {
+            document.documentElement.classList.add('portada-cargada');
+          }
+        };
+        portada.onerror = () => {
+          cargaIniciada = false;
+          document.documentElement.classList.remove('portada-cargada');
+          console.warn('No se encontró portada.jpg junto a index.html. Se mantiene el inicio con textos y botones visibles.');
+        };
+        portada.src = './portada.jpg?v=2';
+      }
+
+      cargarPortada();
+      if (pantallaMovil.addEventListener) {
+        pantallaMovil.addEventListener('change', cargarPortada);
+      } else {
+        pantallaMovil.addListener(cargarPortada);
+      }
+    })();
+  </script>
+
 </body>
 </html>
