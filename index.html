@@ -914,97 +914,102 @@
 
   
     /* ==========================================================
-       HERO PREMIUM - AJUSTES EXCLUSIVOS PARA CELULAR
-       - En PC se conserva el hero original sin modificaciones.
-       - En celular la hamburguesa queda debajo del texto.
-       - Se elimina visualmente la franja de beneficios en móvil.
-       - Cambiar la foto móvil aquí si el restaurante tiene otra.
+       HERO CELULAR V3 — DISEÑO APROBADO
+       Imagen independiente para que no se recorte el título.
+       PC: sin cambios. Modificar solamente estas reglas en móvil.
        ========================================================== */
+    .hero-burger-movil { display: none; }
+
     @media (max-width: 720px) {
+      /* Quitamos totalmente el fondo ampliado del desktop en celular. */
       .hero {
-        /* Dos capas: sombra que protege las letras + foto abajo. */
-        background-image:
-          linear-gradient(180deg,
-            #080808 0%,
-            #080808 18%,
-            rgba(8,8,8,.98) 35%,
-            rgba(8,8,8,.82) 50%,
-            rgba(8,8,8,.14) 71%,
-            rgba(8,8,8,.10) 100%),
-          url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=85&w=1200&auto=format&fit=crop");
-        background-size: 100% 100%, auto 54%;
-        background-position: center, 57% bottom;
-        background-repeat: no-repeat;
-        background-color: #080808;
-        min-height: 820px;
-        height: auto;
-        align-items: flex-start;
+        background: radial-gradient(ellipse at 88% 52%, #261b13 0%, #11100f 30%, #080808 70%);
+        position: relative;
+        display: block;
         isolation: isolate;
+        min-height: 730px;
+        height: auto;
+        overflow: hidden;
+        padding: 0;
       }
-      .hero::before {
-        width: 230px;
-        height: 230px;
-        right: -100px;
-        top: 210px;
-        filter: blur(75px);
-        opacity: .65;
+      .hero::before, .hero::after { content: none; }
+      .hero > .contenedor {
+        position: relative;
+        z-index: 3;
+        width: min(92%, 530px);
       }
-      /* Se anula el degradado móvil antiguo que tapaba la foto. */
-      .hero::after { content: none; }
-      .hero .contenedor { position: relative; z-index: 2; }
+      .hero-burger-movil {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        width: clamp(290px, 83vw, 435px);
+        height: auto;
+        right: -11%;
+        bottom: -15px;
+        pointer-events: none;
+        user-select: none;
+        filter: drop-shadow(-24px 7px 20px rgba(0,0,0,.28));
+      }
       .hero-contenido {
-        max-width: 100%;
-        padding: 62px 0 410px;
+        max-width: none;
+        padding: 42px 0 275px;
       }
       .hero-etiqueta {
-        margin-bottom: 20px;
         padding: 7px 13px;
+        margin-bottom: 22px;
         font-size: 11px;
         letter-spacing: 1.2px;
+        border-color: var(--principal);
+        background: rgba(0,0,0,.72);
       }
       .hero h1 {
-        font-size: clamp(40px, 10.6vw, 58px);
-        line-height: 1.01;
-        letter-spacing: -1.9px;
-        margin-bottom: 21px;
-        max-width: 580px;
-        overflow-wrap: normal;
+        font-size: clamp(35px, 9vw, 54px);
+        line-height: .98;
+        letter-spacing: -1.6px;
+        margin: 0 0 24px;
+        max-width: 100%;
+        text-wrap: balance;
       }
       .hero h1 span { display: block; }
       .hero p {
-        max-width: 360px;
+        max-width: 245px;
         font-size: 15px;
-        line-height: 1.6;
-        color: #e3e3e3;
-        margin-bottom: 23px;
+        line-height: 1.5;
+        color: #f0f0f0;
+        margin: 0 0 26px;
+        text-shadow: 0 2px 10px #000;
       }
       .hero-botones {
-        gap: 10px;
-        flex-wrap: wrap;
-        align-items: stretch;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        width: min(100%, 204px);
       }
       .hero-botones .boton,
       .hero-botones .boton-borde {
-        min-height: 48px;
-        padding: 0 17px;
-        font-size: 14px;
+        width: 100%;
+        min-height: 49px;
+        padding: 0 12px;
+        font-size: 15px;
+        border-radius: 13px;
       }
-      /* La franja no se muestra en móvil; permanece en escritorio. */
+      /* Eliminamos solamente en móvil la franja que recargaba el hero. */
       .beneficios { display: none; }
-      /* Evitar que el contenido siguiente quede pegado al hero. */
-      .menu-esencial { padding-top: 58px; }
+      .menu-esencial { padding-top: 60px; }
     }
-    @media (max-width: 380px) {
-      .hero { min-height: 750px; background-size: 100% 100%, auto 49%; }
-      .hero-contenido { padding: 46px 0 330px; }
-      .hero h1 { font-size: clamp(37px, 10.5vw, 42px); }
-      .hero p { font-size: 14px; }
-      .hero-botones .boton,
-      .hero-botones .boton-borde { font-size: 13px; padding: 0 13px; }
+    @media (max-width: 390px) {
+      .hero { min-height: 700px; }
+      .hero-contenido { padding-top: 32px; padding-bottom: 260px; }
+      .hero h1 { font-size: clamp(34px, 9vw, 39px); }
+      .hero p { max-width: 225px; font-size: 14px; }
+      .hero-burger-movil { right: -15%; width: 85vw; }
+      .hero-botones { width: 180px; }
+      .hero-botones .boton, .hero-botones .boton-borde { font-size: 14px; }
     }
-    @media (prefers-reduced-motion: reduce) {
-      .hero-botones .boton,
-      .hero-botones .boton-borde { transition: none; }
+    @media (max-width: 340px) {
+      .hero h1 { font-size: 32px; }
+      .hero-burger-movil { right: -23%; }
     }
 
   </style>
@@ -1073,6 +1078,9 @@
          ======================================== -->
 
     <section class="hero" id="inicio">
+
+      <!-- Imagen independiente SOLO para el hero celular. -->
+      <img class="hero-burger-movil" src="images/hero-burger-movil.png" alt="" aria-hidden="true" loading="eager" decoding="async">
 
       <div class="contenedor">
 
