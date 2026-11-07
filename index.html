@@ -916,100 +916,171 @@
     @media(prefers-reduced-motion:reduce) {.plato-item,.pestana-menu{transition:none}.plato-item.seleccionado{transform:none}}
 
   
-    /* ================================================================
-       HERO MÓVIL V5 — RECREACIÓN DE LA REFERENCIA APROBADA
-       PC permanece exactamente igual. Toda imagen va en /imagenes.
-       ================================================================ */
-    .hero-burger-movil, .hero-texto-movil, .hero-icono-corona {display:none}
-    .icono-cta {display:none}
-    @media(max-width:720px) {
-      html { scroll-padding-top:82px; }
+    .hero-burger-movil, .hero-texto-movil, .hero-icono-corona,
+    .icono-cta { display: none; }
+    @media (max-width: 720px) {
+      .beneficios { display: none; }
+      .menu-esencial { padding-top: 65px; }
+    }
+
+
+    /* ========================================================
+       INICIO MÓVIL — REFERENCIA EXACTA 865.jpg
+       La ilustración conserva la tipografía, los íconos y la foto.
+       Los enlaces HTML se alinean encima de los botones dibujados.
+       Imagen externa: images/urban-mobile-referencia.jpg
+       Escritorio conserva sus estilos originales.
+       ======================================================== */
+    .carrito-icono-referencia { display: none; }
+
+    @media (max-width: 720px) {
+      body { padding-bottom: max(72px, 18.75vw); }
+
+      /* Primeros 146 píxeles de la referencia: encabezado. */
+      header {
+        position: relative;
+        height: 16.898148vw;
+        border: 0;
+        backdrop-filter: none;
+        background: #050505 url("images/urban-mobile-referencia.jpg")
+                    left top / 100vw auto no-repeat;
+      }
+      header .nav { width: 100%; height: 100%; min-height: 0; padding: 0; }
+      header .logo {
+        position: absolute;
+        left: 4.7%; top: 18%; width: 51%; height: 64%;
+        opacity: 0;
+      }
+      header .menu-movil {
+        display: block;
+        position: absolute;
+        right: 3%; top: 12%; width: 12%; height: 75%;
+        padding: 0;
+        font-size: 0;
+        color: transparent;
+      }
+      header .nav-links { top: 100%; z-index: 1001; }
+      header .menu-movil:focus-visible,
+      header .logo:focus-visible {
+        outline: 3px solid #ffce00;
+        outline-offset: -3px;
+        opacity: 1;
+      }
+
+      /* Recorte por CSS: muestra la portada, excluye el carrito de ejemplo. */
       .hero {
-        position:relative; display:block; isolation:isolate;
-        min-height:785px; height:auto; overflow:hidden; padding:0;
-        background:radial-gradient(ellipse at 92% 62%,#27180f 0%,#0d0d0d 43%,#050505 77%);
+        display: block;
+        height: 142.129630vw;
+        min-height: 0;
+        padding: 0;
+        background: #070707 url("images/urban-mobile-referencia.jpg")
+                    left -16.898148vw / 100vw auto no-repeat;
       }
-      .hero::before {content:none!important;display:none!important}
-      .hero::after {content:""!important;display:block!important;position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.64) 36%,transparent 68%)}
-      .hero > .contenedor {width:calc(100% - 38px);position:relative;z-index:4;margin:0 auto;}
-      .hero-contenido {position:relative;z-index:4;padding:42px 0 330px;max-width:none;}
-      .hero-etiqueta {
-        display:inline-flex;align-items:center;gap:9px;
-        border:1.7px solid var(--principal);border-radius:100px;
-        background:rgba(0,0,0,.78);color:var(--principal);
-        margin:0 0 28px;padding:8px 15px;
-        font-family:'Barlow Condensed',Impact,sans-serif;font-size:15px;font-weight:800;
-        letter-spacing:2.4px;line-height:1.1;
+      .hero::before, .hero::after { display: none; }
+      .hero > .contenedor,
+      .hero-contenido {
+        position: static;
+        width: 100%; max-width: none;
+        height: 100%; margin: 0; padding: 0;
       }
-      .hero-icono-corona {display:block;flex:0 0 20px}
-      .hero h1 {
-        display:flex;flex-direction:column;align-items:flex-start;
-        max-width:100%;white-space:nowrap;overflow:visible;
-        font-family:'Barlow Condensed',Impact,sans-serif;
-        font-weight:900;font-style:italic;text-transform:uppercase;
-        letter-spacing:-.5px;font-size:clamp(46px,12.7vw,69px);
-        line-height:.96;margin:0 0 32px;text-shadow:1px 2px 0 rgba(20,20,20,.8);
+
+      /* Texto accesible: el aspecto visible está en el arte original. */
+      .hero-etiqueta, .hero h1, .hero p {
+        position: absolute;
+        width: 1px; height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+        padding: 0; margin: 0; border: 0;
       }
-      .hero h1 span {
-        display:block;color:var(--principal);
-        font-family:'Permanent Marker','Barlow Condensed',Impact,cursive;
-        font-weight:400;font-style:normal;font-size:.94em;letter-spacing:-2.1px;
-        transform:skew(-3deg);transform-origin:left center;
-        padding-bottom:9px;
-        border-bottom:3px solid var(--principal);
+      .hero-botones { display: contents; }
+      .hero-botones a {
+        position: absolute;
+        z-index: 3;
+        display: block;
+        padding: 0; margin: 0; border: 0;
+        background: transparent;
+        box-shadow: none;
+        font-size: 0; color: transparent;
+        transform: none;
+        border-radius: 4.5vw;
       }
-      .hero .hero-texto-escritorio {display:none}
-      .hero .hero-texto-movil {
-        display:block;max-width:60%;margin:0 0 26px;
-        font-family:'Barlow',Arial,sans-serif;font-size:clamp(15px,4.1vw,19px);
-        font-weight:400;line-height:1.55;color:#f1f1f1;
-        text-shadow:0 2px 12px #000;
+      .hero-botones .boton {
+        left: 6.134259%; top: 48.697068%;
+        width: 41.666667%; height: 6.921824%;
       }
-      .hero-botones {
-        display:flex;flex-direction:column;align-items:flex-start;
-        gap:11px;width:53%;min-width:185px;max-width:245px;
+      .hero-botones .boton-borde {
+        left: 6.134259%; top: 57.491857%;
+        width: 39.699074%; height: 6.677524%;
       }
-      .hero-botones .boton,.hero-botones .boton-borde {
-        min-height:52px;width:100%;padding:0 8px;gap:10px;
-        border-radius:18px;font-family:'Barlow',Arial,sans-serif;
-        font-size:16px;font-weight:800;white-space:nowrap;
+      .hero-botones a:focus-visible {
+        outline: 3px solid white;
+        outline-offset: 3px;
       }
-      .hero-botones .boton-borde {background:rgba(0,0,0,.45);border:1.6px solid #e3e3e3}
-      .hero-botones .icono-cta {display:block;width:22px;height:22px;flex:0 0 22px}
-      .hero-burger-movil {
-        display:block;position:absolute;z-index:2;pointer-events:none;user-select:none;
-        width:clamp(225px,67vw,350px);max-width:none;height:auto;
-        right:-11%;bottom:0;
-        filter:drop-shadow(-12px 3px 13px #0009);
+      .hero-botones a:active { background: rgb(255 255 255 / 12%); }
+      .hero-botones a:hover { transform: none; background: transparent; }
+      .beneficios { margin-top: 0; }
+      body.inicio-visible .whatsapp-flotante { visibility: hidden; }
+
+      /* Carrito real: nunca se utilizan los $42.000 impresos en la foto. */
+      .barra-carrito-movil {
+        display: grid;
+        grid-template-columns: 1.33fr .9fr 1fr;
+        gap: 0;
+        min-height: 72px;
+        height: 18.75vw;
+        padding: 2.8vw 2.7vw 3vw 4.7vw;
+        border-top: 2px solid #efbd29;
+        background: linear-gradient(115deg, #101010, #0d0d0d);
+        box-shadow: none;
+        font-family: Arial, sans-serif;
+        font-size: 3.7vw;
+        font-weight: 700;
+        text-align: left;
       }
-      .beneficios {display:none!important}
-      .menu-esencial {padding-top:65px}
+      .resumen-carrito-movil {
+        display: flex; align-items: center; gap: 3.4vw;
+        min-width: 0; white-space: nowrap;
+      }
+      .carrito-icono-referencia {
+        position: relative;
+        display: inline-flex;
+        width: 6.4vw; flex: 0 0 6.4vw;
+      }
+      .carrito-icono-referencia svg { width: 100%; height: auto; }
+      .carrito-insignia {
+        position: absolute;
+        top: -2.4vw; right: -1.9vw;
+        display: grid; place-items: center;
+        min-width: 4.4vw; height: 4.4vw;
+        padding: 0 .6vw;
+        border-radius: 50%;
+        color: #080808; background: #ffca05;
+        font-size: 2.9vw;
+      }
+      #totalMovil {
+        border-left: 1px solid #666;
+        text-align: center;
+        font-size: 4.4vw;
+        color: #ffc500;
+        white-space: nowrap;
+      }
+      .ver-carrito-movil {
+        display: grid; place-items: center;
+        min-height: 9vw;
+        padding: 1vw;
+        border: 1px solid #e8b932;
+        border-radius: 3.5vw;
+        white-space: nowrap;
+      }
+      .whatsapp-flotante { bottom: calc(max(72px, 18.75vw) + 14px); }
     }
-    @media (max-width:420px) {
-      .hero {min-height:770px}
-      .hero-contenido {padding-top:40px;padding-bottom:320px}
-      .hero h1 {font-size:clamp(43px,12.5vw,55px)}
-      .hero h1 span {font-size:.93em}
-      .hero-burger-movil {width:67vw;right:-12%}
-      .hero .hero-texto-movil {max-width:63%;font-size:15px}
-      .hero-botones {width:55%;min-width:180px}
-    }
-    @media (max-width:360px) {
-      .hero h1 {font-size:42px}
-      .hero h1 span {font-size:.90em}
-      .hero-etiqueta {font-size:12px;letter-spacing:1.7px}
-      .hero-burger-movil {width:68vw;right:-14%}
-      .hero-botones {min-width:160px}
-      .hero-botones .boton,.hero-botones .boton-borde {font-size:14px}
-      .hero .hero-texto-movil {font-size:14px}
-    }
-    @media(prefers-reduced-motion:reduce){.hero h1 span{transform:none}}
 
   </style>
 </head>
 
 
-<body>
+<body class="inicio-visible">
 
   <!-- ========================================
        HEADER
@@ -1055,6 +1126,8 @@
         class="menu-movil"
         id="menuMovil"
         aria-label="Abrir menú"
+        aria-controls="navLinks"
+        aria-expanded="false"
       >
         ☰
       </button>
@@ -1072,8 +1145,7 @@
 
     <section class="hero" id="inicio">
 
-      <!-- Imagen independiente SOLO para el hero celular. -->
-      <img class="hero-burger-movil" src="imagenes/hamburguesa-hero.png" alt="" aria-hidden="true" loading="eager" decoding="async">
+
 
       <div class="contenedor">
 
@@ -1636,7 +1708,8 @@
 
     botonMenu.addEventListener("click", () => {
 
-      navegacion.classList.toggle("activo");
+      const abierto = navegacion.classList.toggle("activo");
+      botonMenu.setAttribute("aria-expanded", String(abierto));
 
     });
 
@@ -1649,6 +1722,7 @@
       link.addEventListener("click", () => {
 
         navegacion.classList.remove("activo");
+        botonMenu.setAttribute("aria-expanded", "false");
 
       });
 
@@ -1661,9 +1735,18 @@
        RESUMEN FIJO EN CELULARES - visible durante toda la navegación
        ====================================================== -->
   <button class="barra-carrito-movil" id="barraCarritoMovil" type="button" aria-label="Ir al carrito">
-    <span>🛒 <span id="cantidadMovil">0</span> productos</span>
+    <span class="resumen-carrito-movil">
+      <span class="carrito-icono-referencia" aria-hidden="true">
+        <svg viewBox="0 0 56 54" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 5h7l8 32h29l7-24H12M17 37l-2 6h31" />
+          <circle cx="20" cy="49" r="3" /><circle cx="43" cy="49" r="3" />
+        </svg>
+        <span class="carrito-insignia" id="insigniaMovil">0</span>
+      </span>
+      <span><span id="cantidadMovil">0</span> <span id="palabraProductosMovil">productos</span></span>
+    </span>
     <strong id="totalMovil">$0</strong>
-    <span>Ver carrito ↑</span>
+    <span class="ver-carrito-movil">Ver carrito ↑</span>
   </button>
 
   <!-- ======================================================
@@ -1900,6 +1983,8 @@
       document.getElementById("cantidadCarrito").textContent=`(${cantidad})`;
       document.getElementById("totalCarrito").textContent=formato(total);
       document.getElementById("cantidadMovil").textContent=cantidad;
+      document.getElementById("insigniaMovil").textContent=cantidad;
+      document.getElementById("palabraProductosMovil").textContent=cantidad===1?"producto":"productos";
       document.getElementById("totalMovil").textContent=formato(total);
       document.getElementById("resumenVentana").textContent=`${cantidad} producto(s) · Subtotal ${formato(total)}`;
     }
@@ -1953,5 +2038,16 @@
   })();
   </script>
 
+  <!-- Evita tapar la portada con el botón flotante de WhatsApp. -->
+  <script>
+    if ('IntersectionObserver' in window) {
+      const observadorInicio = new IntersectionObserver(([entrada]) => {
+        document.body.classList.toggle('inicio-visible', entrada.isIntersecting);
+      });
+      observadorInicio.observe(document.getElementById('inicio'));
+    } else {
+      document.body.classList.remove('inicio-visible');
+    }
+  </script>
 </body>
 </html>
