@@ -928,7 +928,7 @@
        INICIO MÓVIL — VERSIÓN 2 CON CARGA VERIFICADA
        La ilustración conserva la tipografía, los íconos y la foto.
        Los enlaces HTML se alinean encima de los botones dibujados.
-       Imagen externa: ./portada.jpg?v=2
+       Imagen externa: ./imagenes/portada.jpg?v=3
        Escritorio conserva sus estilos originales.
        ======================================================== */
     .carrito-icono-referencia { display: none; }
@@ -942,7 +942,7 @@
         height: 16.898148vw;
         border: 0;
         backdrop-filter: none;
-        background: #050505 url("./portada.jpg?v=2")
+        background: #050505 url("./imagenes/portada.jpg?v=3")
                     left top / 100vw auto no-repeat;
       }
       html.portada-cargada header .nav { width: 100%; height: 100%; min-height: 0; padding: 0; }
@@ -973,7 +973,7 @@
         height: 142.129630vw;
         min-height: 0;
         padding: 0;
-        background: #070707 url("./portada.jpg?v=2")
+        background: #070707 url("./imagenes/portada.jpg?v=3")
                     left -16.898148vw / 100vw auto no-repeat;
       }
       html.portada-cargada .hero::before, html.portada-cargada .hero::after { display: none; }
@@ -2052,7 +2052,7 @@
 
   <!-- ========================================================
        CARGA SEGURA DE PORTADA
-       Subir portada.jpg AL LADO de index.html, sin subcarpetas.
+       La imagen está en imagenes/portada.jpg, según el repositorio actual.
        La composición se activa solo cuando la imagen cargó bien.
        Si falta la imagen, los textos y botones siguen visibles.
        ======================================================== -->
@@ -2073,9 +2073,9 @@
         portada.onerror = () => {
           cargaIniciada = false;
           document.documentElement.classList.remove('portada-cargada');
-          console.warn('No se encontró portada.jpg junto a index.html. Se mantiene el inicio con textos y botones visibles.');
+          console.warn('No se encontró imagenes/portada.jpg. Se mantiene el inicio con textos y botones visibles.');
         };
-        portada.src = './portada.jpg?v=2';
+        portada.src = './imagenes/portada.jpg?v=3';
       }
 
       cargarPortada();
