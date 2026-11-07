@@ -13,6 +13,9 @@
     content="Hamburguesas artesanales, bebidas, entradas y mucho sabor."
   >
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;800;900&family=Barlow+Condensed:ital,wght@0,800;0,900;1,900&family=Permanent+Marker&display=swap" rel="stylesheet">
   <style>
 
     /* ========================================
@@ -914,122 +917,93 @@
 
   
     /* ================================================================
-       HERO CELULAR V4 — COMPOSICIÓN APROBADA
-       - Imagen desde /imagenes, NO desde /images
-       - Texto siempre debajo del header, nunca tapado
-       - Hamburguesa en esquina inferior derecha
-       - PC no se modifica
+       HERO MÓVIL V5 — RECREACIÓN DE LA REFERENCIA APROBADA
+       PC permanece exactamente igual. Toda imagen va en /imagenes.
        ================================================================ */
-    .hero-burger-movil { display: none; }
-
-    @media (max-width: 720px) {
+    .hero-burger-movil, .hero-texto-movil, .hero-icono-corona {display:none}
+    .icono-cta {display:none}
+    @media(max-width:720px) {
+      html { scroll-padding-top:82px; }
       .hero {
-        display: block;
-        position: relative;
-        isolation: isolate;
-        min-height: 780px;
-        height: auto;
-        overflow: hidden;
-        padding: 0;
-        background:
-          radial-gradient(circle at 90% 63%, rgba(71,42,20,.38), transparent 45%),
-          linear-gradient(145deg,#080808 15%,#101010 55%,#050505);
+        position:relative; display:block; isolation:isolate;
+        min-height:785px; height:auto; overflow:hidden; padding:0;
+        background:radial-gradient(ellipse at 92% 62%,#27180f 0%,#0d0d0d 43%,#050505 77%);
       }
-      .hero::before,
-      .hero::after { display:none; content:none; }
-      .hero > .contenedor {
-        width: min(92%, 530px);
-        position: relative;
-        z-index: 3;
-      }
-      .hero-contenido {
-        max-width: 100%;
-        padding: 47px 0 325px;
-        position: relative;
-        z-index: 4;
-      }
+      .hero::before {content:none!important;display:none!important}
+      .hero::after {content:""!important;display:block!important;position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.64) 36%,transparent 68%)}
+      .hero > .contenedor {width:calc(100% - 38px);position:relative;z-index:4;margin:0 auto;}
+      .hero-contenido {position:relative;z-index:4;padding:42px 0 330px;max-width:none;}
       .hero-etiqueta {
-        display: inline-flex;
-        align-items:center;
-        margin:0 0 25px;
-        padding:8px 14px;
-        border:1.5px solid var(--principal);
-        border-radius:999px;
-        background:rgba(0,0,0,.78);
-        color:var(--principal);
-        font-size:11px;
-        font-weight:900;
-        letter-spacing:1.5px;
+        display:inline-flex;align-items:center;gap:9px;
+        border:1.7px solid var(--principal);border-radius:100px;
+        background:rgba(0,0,0,.78);color:var(--principal);
+        margin:0 0 28px;padding:8px 15px;
+        font-family:'Barlow Condensed',Impact,sans-serif;font-size:15px;font-weight:800;
+        letter-spacing:2.4px;line-height:1.1;
       }
+      .hero-icono-corona {display:block;flex:0 0 20px}
       .hero h1 {
-        display:block;
-        margin:0 0 29px;
-        font-size:clamp(36px,9.5vw,52px);
-        line-height:1.02;
-        letter-spacing:-1.7px;
-        max-width:100%;
-        text-wrap:initial;
-        overflow:visible;
+        display:flex;flex-direction:column;align-items:flex-start;
+        max-width:100%;white-space:nowrap;overflow:visible;
+        font-family:'Barlow Condensed',Impact,sans-serif;
+        font-weight:900;font-style:italic;text-transform:uppercase;
+        letter-spacing:-.5px;font-size:clamp(46px,12.7vw,69px);
+        line-height:.96;margin:0 0 32px;text-shadow:1px 2px 0 rgba(20,20,20,.8);
       }
-      .hero h1 span {display:block;color:var(--principal)}
-      .hero p {
-        max-width: 47%;
-        margin: 0 0 27px;
-        font-size:clamp(13px,3.5vw,16px);
-        line-height:1.55;
-        color:#f1f1f1;
-        text-shadow:0 1px 8px #000;
+      .hero h1 span {
+        display:block;color:var(--principal);
+        font-family:'Permanent Marker','Barlow Condensed',Impact,cursive;
+        font-weight:400;font-style:normal;font-size:.94em;letter-spacing:-2.1px;
+        transform:skew(-3deg);transform-origin:left center;
+        padding-bottom:9px;
+        border-bottom:3px solid var(--principal);
+      }
+      .hero .hero-texto-escritorio {display:none}
+      .hero .hero-texto-movil {
+        display:block;max-width:60%;margin:0 0 26px;
+        font-family:'Barlow',Arial,sans-serif;font-size:clamp(15px,4.1vw,19px);
+        font-weight:400;line-height:1.55;color:#f1f1f1;
+        text-shadow:0 2px 12px #000;
       }
       .hero-botones {
-        display:flex;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:12px;
-        width:46%;
-        min-width:155px;
-        max-width:210px;
+        display:flex;flex-direction:column;align-items:flex-start;
+        gap:11px;width:53%;min-width:185px;max-width:245px;
       }
-      .hero-botones .boton,
-      .hero-botones .boton-borde {
-        width:100%;
-        min-height:51px;
-        border-radius:14px;
-        padding:0 10px;
-        font-size:14px;
-        white-space:nowrap;
+      .hero-botones .boton,.hero-botones .boton-borde {
+        min-height:52px;width:100%;padding:0 8px;gap:10px;
+        border-radius:18px;font-family:'Barlow',Arial,sans-serif;
+        font-size:16px;font-weight:800;white-space:nowrap;
       }
+      .hero-botones .boton-borde {background:rgba(0,0,0,.45);border:1.6px solid #e3e3e3}
+      .hero-botones .icono-cta {display:block;width:22px;height:22px;flex:0 0 22px}
       .hero-burger-movil {
-        display:block;
-        position:absolute;
-        z-index:2;
-        width:clamp(280px,83vw,470px);
-        max-width:none;
-        height:auto;
-        right:-10%;
-        bottom:0;
-        pointer-events:none;
-        user-select:none;
-        filter:drop-shadow(-12px 3px 16px rgba(0,0,0,.25));
+        display:block;position:absolute;z-index:2;pointer-events:none;user-select:none;
+        width:clamp(225px,67vw,350px);max-width:none;height:auto;
+        right:-11%;bottom:0;
+        filter:drop-shadow(-12px 3px 13px #0009);
       }
-      .beneficios {display:none}
-      .menu-esencial {padding-top:62px}
+      .beneficios {display:none!important}
+      .menu-esencial {padding-top:65px}
     }
-    @media (max-width: 420px) {
-      .hero {min-height:765px}
-      .hero-contenido {padding-top:43px;padding-bottom:300px}
-      .hero h1 {font-size:clamp(35px,9.7vw,42px);letter-spacing:-1.5px}
-      .hero p {max-width:47%;font-size:13px}
-      .hero-burger-movil {width:88vw;right:-13%}
-      .hero-botones {min-width:154px}
+    @media (max-width:420px) {
+      .hero {min-height:770px}
+      .hero-contenido {padding-top:40px;padding-bottom:320px}
+      .hero h1 {font-size:clamp(43px,12.5vw,55px)}
+      .hero h1 span {font-size:.93em}
+      .hero-burger-movil {width:67vw;right:-12%}
+      .hero .hero-texto-movil {max-width:63%;font-size:15px}
+      .hero-botones {width:55%;min-width:180px}
     }
-    @media (max-width: 360px) {
-      .hero {min-height:760px}
-      .hero h1 {font-size:34px;letter-spacing:-1.4px}
-      .hero p {max-width:49%;font-size:12px}
-      .hero-botones {min-width:142px}
-      .hero-botones .boton,.hero-botones .boton-borde {font-size:12px}
-      .hero-burger-movil {width:91vw;right:-18%}
+    @media (max-width:360px) {
+      .hero h1 {font-size:42px}
+      .hero h1 span {font-size:.90em}
+      .hero-etiqueta {font-size:12px;letter-spacing:1.7px}
+      .hero-burger-movil {width:68vw;right:-14%}
+      .hero-botones {min-width:160px}
+      .hero-botones .boton,.hero-botones .boton-borde {font-size:14px}
+      .hero .hero-texto-movil {font-size:14px}
     }
+    @media(prefers-reduced-motion:reduce){.hero h1 span{transform:none}}
 
   </style>
 </head>
@@ -1106,6 +1080,7 @@
         <div class="hero-contenido">
 
           <div class="hero-etiqueta">
+            <svg class="hero-icono-corona" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7l5 4 5-7 5 7 5-4-2 12H4L2 7Z"/><path d="M4 22h16"/></svg>
             SABOR ARTESANAL
           </div>
 
@@ -1118,21 +1093,22 @@
           </h1>
 
 
-          <p>
+          <p class="hero-texto-escritorio">
             Hamburguesas artesanales, ingredientes frescos
             y combinaciones creadas para convertir cualquier
             antojo en una experiencia increíble.
           </p>
+          <p class="hero-texto-movil">Hamburguesas artesanales,<br>ingredientes frescos y<br>combinaciones únicas.</p>
 
 
           <div class="hero-botones">
 
             <a href="#menu" class="boton">
-              Ver menú ↓
+              <svg class="icono-cta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11V9a8 8 0 0 1 16 0v2"/><path d="M3 11h18v5H3z"/><path d="M5 16v3h14v-3"/><path d="M2 22h20"/></svg> Ver menú ↓
             </a>
 
             <a href="#nosotros" class="boton-borde">
-              Conócenos
+              <svg class="icono-cta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg> Conócenos
             </a>
 
           </div>
